@@ -75,3 +75,9 @@ The args in quotes above are passed to the terminal emulator. See example below:
 ```sh
 $ sudo ip link set enp2s0 address 00:09:03:18:23:7d
 ```
+
+## spoof-mac-addr-2.py
+
+`spoof-mac-addr-2.py` is a simpler version of the other MAC spoof script. Instead drawing from the OUI list, it generates a totally pseudo-random MAC address. In this case, the first octet must abide by the constraints of protocol, so the first octet but be based on the hex value of an even number. Again, in this case, a number which falls between 16 and 255. Otherwise, the five remaining do not need to be exclusively even numbers.
+
+`hex(choice(range(16, 255, 2)))[2:]` returns the first octet, followed by `hex(randint(16, 256))[2:]` which returns the remaining five octets.
